@@ -74,7 +74,6 @@ public class AuthorizationGatewayRequest {
      */
     public static Predicate<ServerHttpRequest> apisRequiredAdmin() {
         final Set<String> apiEndpoints = Set.of("/admin/1.0.0");
-
         return r -> apiEndpoints.stream().anyMatch(uri -> r.getURI().getPath().contains(uri));
     }
 
