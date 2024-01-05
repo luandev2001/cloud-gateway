@@ -1,6 +1,6 @@
 package com.xuanluan.mc.cloud.jwt;
 
-import com.xuanluan.mc.exception.ServiceNotStackTraceException;
+import com.xuanluan.mc.sdk.exception.ServiceNotStackTraceException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;

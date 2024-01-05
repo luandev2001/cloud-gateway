@@ -2,8 +2,8 @@ package com.xuanluan.mc.cloud.filter;
 
 import com.xuanluan.mc.auth.model.enums.RoleAccount;
 import com.xuanluan.mc.cloud.jwt.JwtProvider;
-import com.xuanluan.mc.exception.ServiceNotStackTraceException;
-import com.xuanluan.mc.utils.BaseStringUtils;
+import com.xuanluan.mc.sdk.exception.ServiceNotStackTraceException;
+import com.xuanluan.mc.sdk.utils.StringUtils;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +42,7 @@ public class AuthenticationGatewayFilter implements GatewayFilter {
                 }
 
                 String clientId = request.getHeaders().getFirst("clientId");
-                if (!BaseStringUtils.hasTextAfterTrim(clientId)) {
+                if (!StringUtils.hasTextAfterTrim(clientId)) {
                     throw new ServiceNotStackTraceException(HttpStatus.BAD_REQUEST, "clientId header is null", "clientId header bị rỗng");
                 }
                 String token = jwtProvider.resolveToken(request, tokenHeader);
@@ -52,7 +52,7 @@ public class AuthenticationGatewayFilter implements GatewayFilter {
                     Claims claims = jwtProvider.getClaims(token);
                     //check role type of user
                     List<String> roles = (List<String>) claims.get("roles");
-                    Assert.isTrue(roles != null && roles.size() > 0, "roles cannot be null or empty");
+                    Assert.isTrue(roles != null && !roles.isEmpty(), "roles cannot be null or empty");
 
                     boolean isSuccessful = false;
                     for (String role : roles) {
@@ -88,7 +88,7 @@ public class AuthenticationGatewayFilter implements GatewayFilter {
     }
 
     private void validateToken(String token) throws ServiceNotStackTraceException {
-        if (!BaseStringUtils.hasTextAfterTrim(token)) {
+        if (!StringUtils.hasTextAfterTrim(token)) {
             throw new ServiceNotStackTraceException(HttpStatus.UNAUTHORIZED, "Invalid token information!", "Mã phiên đăng nhập không hợp lệ hoặc đã hết hạn!");
         }
     }
