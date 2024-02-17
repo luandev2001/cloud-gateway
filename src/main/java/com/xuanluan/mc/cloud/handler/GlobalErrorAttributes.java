@@ -1,6 +1,6 @@
 package com.xuanluan.mc.cloud.handler;
 
-import com.xuanluan.mc.exception.ServiceNotStackTraceException;
+import com.xuanluan.mc.sdk.exception.ServiceNotStackTraceException;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.DefaultErrorAttributes;
 import org.springframework.http.HttpStatus;
