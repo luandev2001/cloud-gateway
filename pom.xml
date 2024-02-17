@@ -12,7 +12,6 @@
     <properties>
         <service.sdk.version>1.2.13</service.sdk.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
-        <authen-model.version>2.0.0</authen-model.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
@@ -45,23 +44,12 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>
 
         <!--    sub libs    -->
         <dependency>
             <groupId>com.xuanluan.mc</groupId>
             <artifactId>service-sdk</artifactId>
             <version>${service.sdk.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.xuanluan.mc.auth</groupId>
-            <artifactId>authen-model</artifactId>
-            <version>${authen-model.version}</version>
         </dependency>
     </dependencies>
 
