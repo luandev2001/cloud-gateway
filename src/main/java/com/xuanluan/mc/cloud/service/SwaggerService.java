@@ -16,7 +16,7 @@ public class SwaggerService {
 
     public Mono<Void> redirectSwaggerUI(String token, ServerHttpResponse response, String location) {
         response.setStatusCode(HttpStatus.PERMANENT_REDIRECT);
-        response.getHeaders().set("X-CSRFToken", token);
+        response.getHeaders().set("Authorization", token);
         response.getHeaders().setLocation(URI.create(location));
         return response.setComplete();
     }

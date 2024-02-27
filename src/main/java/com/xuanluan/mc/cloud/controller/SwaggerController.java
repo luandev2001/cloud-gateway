@@ -20,7 +20,7 @@ public class SwaggerController {
 
     @GetMapping("swagger/{service}")
     public Mono<Void> redirectSwaggerServiceUI(@PathVariable String service,
-                                               @RequestHeader(name = "X-CSRFToken") String token,
+                                               @RequestHeader(name = "Authorization") String token,
                                                ServerHttpResponse response) {
         String suffix = "/swagger-ui/index.html#/";
         String location = "/" + service + "-service" + suffix;
